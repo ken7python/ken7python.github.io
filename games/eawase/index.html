@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <div main>
+        <div id="kihon">
+        <h1>デジタル絵合わせ</h1>
+        先行<input type="text" id="sn">
+        <br>
+        後行<input type="text" id="kn">
+        <br>
+        <br>
+        <button onclick="start()">スタート</button>
+        <br>
+        <br>
+        </div>
+        <div id="game_kankei">
+            <div id="m"></div>
+            <br>
+            <div id="game"></div>
+        </div>
+    </div>
+    </body>
+    <head>
+        <script src="jquery/jquery-3.6.0.min.js"></script>
+        <meta charset="utf-8">
+        <style>
+
+            #game_kankei{
+                float: left;
+            }
+             
+            .active{
+                opacity:0.0;
+            }
+            td{
+                background-color:orange;
+            }
+            th{
+                background-color:blanchedalmond;
+            }
+            .k{
+                background:aqua;
+                background-image: -webkit-radial-gradient(blue 20%, transparent 0), -webkit-radial-gradient(blue 20%, transparent 0);
+                    background-image: radial-gradient(blue 20%, transparent 0), radial-gradient(blue 20%, transparent 0);
+                background-position: 0 0, 10px 10px;
+                    -webkit-background-size: 20px 20px;
+                background-size: 20px 20px;
+
+                width: 60px;
+                height: 60px;
+            }
+            .e{
+                width: 60px;
+                height: 60px;
+            }
+        </style>
+        <script>
+            var list4 = [];
+            var click_flg = false;
+            var k_w;
+            var k_h;
+            var m_k = 0;
+            var r_s = false;
+            var list2 = []
+            var km = 0;
+            var t1 = 0;
+            var t2 = 0;
+            var a=0;
+            var b=0;
+            var ta = 1;
+            var so = false;
+            var list3 = [];
+            var game = document.getElementById("game");
+            var m = document.getElementById("m");
+            game.innerHTML = " ";
+            var sn = document.getElementById("sn");
+            var kn = document.getElementById("kn");
+
+            function mi(){
+                if (ta==1){
+                    m.innerHTML = sn.value+"の順番です";
+                }
+                if (ta==2){
+                    m.innerHTML = kn.value+"の順番です";
+                }
+                m.innerHTML += "<table><tr><th>"+ sn.value +"</th><th>"+ kn.value +"</th></tr><td>"+ t1 +"</td><td>"+ t2 +"</td></table>"
+            }
+
+            function gt(name,w,h){
+                var e = "<img class='e' src=img/"+ name +" style='position: absolute;left: "+(w+20)+"px"+";top: "+h+"px'>";
+                var k = "<img class='k' src='img/card.png' style='position: absolute;left: "+(w+20)+"px"+";top: "+h+"px'>";
+                game.innerHTML += "<div>"+ e + k +"</div>";
+            }
+            function kesu(n){
+                i = 0;
+                while ("img/"+list3[i]+".png" != n){
+                    i++
+                }
+                console.log(i);
+                list3.splice(i,1);
+            }
+            function start(){
+                game.innerHTML = " ";
+                list4 = [];
+                click_flg = true;
+                r_s = false;
+                ak = 0
+                bk = 0;
+                b = 0;
+                a = 0;
+                var list = ["1","2","3","4","5","6","7","8","9"];
+                list2 = []
+                mi();
+                for (i=0;i<2;i++){
+                    list2 = list2.concat(list);
+                }
+                list2.push("LackyCard");
+                list2.push("ShuffleCard");
+                list3 = [];
+                console.log(list2);
+                list3 = list3.concat(list2);
+                console.log(list3);
+                for (var j=0;j<4;j++){
+                    for (var i=0;i<4;i++){
+                        km++;
+                        var random = Math.floor( Math.random() * list2.length );
+                        gt(list2[random]+".png",i*80,j*80+370);
+                        list2.splice(random, 1);
+                    }
+                }
+                i = 0;
+                for(i=0;i<4;i++){
+                    km++;
+                    var random = Math.floor( Math.random() * list2.length );
+                    gt(list2[random]+".png",i*80,j*80+370);
+                    list2.splice(random, 1);
+                }
+                cl();
+            }
+            function han(){
+                if (a == b){
+                    so = true
+                    km-=2;
+
+                    if (ta == 1){
+                        t1 += 1;
+                    }
+                    if (ta == 2){
+                        t2 += 1;
+                    }
+                    mi();
+                }
+            }
+
+            function set(n){
+                if (a==0){
+                    a = n ;
+                }
+                else{
+                    if (b == 0){
+                        b = n;
+
+                        han();
+                        if (so){
+
+                        }
+                        else{
+                            if (ta == 1){
+                                ta = 2;
+                                ak = 0;
+                                bk = 0;
+                            }
+                            else{
+                                ta = 1;
+                                ak = 0;
+                                bk = 0;
+                            }
+                        }
+                    }
+                }
+                mi()
+            }
+            function cl(){
+                $(".k").on('click',function() {
+                    console.log(list3);
+                    if (r_s || m_k > 2 || !click_flg){
+
+                    }
+                    else{
+                        var music = new Audio('oto/tatti.mp3');
+                        music.play();
+                        click_flg = false;
+                        k_w = $(this).width();
+                        k_h = $(this).height();
+
+                    m_k++
+                    var n = $(this).parent().children('.e').attr("src");
+                    $(this).hide();
+                    $(this).parent().children('.e').animate({
+                       "width": 100,
+                       "height": 100 
+                    });
+                    $(this).parent().children('.e').animate({
+                        "width": 50,
+                        "height": 50 
+                     });
+                     $(this).show();
+                    if (n != "img/LackyCard.png"){
+                        if(n != "img/ShuffleCard.png"){
+                            $(this).removeClass("k");
+                            $(this).addClass("active");
+                        }
+                        else{
+                            console.log("ShuffleCard");
+                            $self = $(this).parent().children('.e');
+                            $(this).hide();
+
+                            for(i=0;i<4;i++){
+                                $($self).animate({
+                                    "opacity":0.0,
+                                },
+                                 250);
+                                 $($self).animate({
+                                    "opacity":1.0,
+                                },
+                                 250);
+                            }
+                        }
+                    }
+                    else{
+                        $(this).hide();
+                            $self = $(this).parent().children('.e');
+                            for(i=0;i<4;i++){
+                                $($self).animate({
+                                    "opacity":0.0,
+                                },
+                                 250);
+                                 $($self).animate({
+                                    "opacity":1.0,
+                                },
+                                 250);
+                            }
+                            $(this).removeClass("k");
+                            $(this).addClass("r");
+                    }
+
+
+                    if (n == "img/LackyCard.png"){
+                        r_s = true;
+                    }
+                    setTimeout(function(){
+                        //n = n.replace("img/","").replace(".png","");
+                        if (n == "img/LackyCard.png"){
+                            var music = new Audio('oto/rakii.mp3');
+                            music.play();
+                            console.log("LackyCard");
+
+                    
+                            setTimeout(function(){
+                                $(".active").show();
+
+                                $(".active").removeClass("active").addClass("k");
+                            setTimeout(function(){
+                                $(".k").css("opacity",0.0);
+                                $("img").not(".e").css("opacity",0.0);
+                                setTimeout(function(){
+                                $(".k").css("opacity",1.0);
+                                $("img").not(".e").css("opacity",1.0);
+                                r_s = false;
+                            },2500);
+
+
+                            },2000);
+
+                            $(".r").parent().children('.e').remove();
+                            $(".r").remove();
+                            
+
+                            kesu("img/LackyCard.png");
+                            km--
+                            a = 0;
+                            b = 0;
+                            if (km == 0){
+                                alert("終了");
+                                if (t1 > t2){
+                                    alert(sn.value+"の勝利");
+                                }
+                                if (t1 < t2){
+                                    alert(kn.value+"の勝利");
+                                }
+                                if (t1 == t2){
+                                    alert("引き分け");
+                                }
+                            }
+
+                            },1000);
+                            
+                        }
+                        else{
+                            if (n == "img/ShuffleCard.png"){
+                                //シャッフル
+                                var music = new Audio('oto/syahhuru.mp3');
+                                music.play();
+                                setTimeout(function(){
+                                    game.innerHTML = " ";
+                                    a = 0;
+                                    b = 0;
+                                    km = -1;
+                                    j = 0;
+                                    i = 0; 
+                                    m_k = 0;
+                                    var k=0;
+                                    list4=list4.concat(list3);
+                                    var list5 = []
+                                    for(k=0;k<list4.length;k++){
+                                        km++;
+                                        var random = Math.floor( Math.random() * list3.length );
+                                        if (list3[random] != "ShuffleCard"){
+                                            gt(list3[random]+".png",i*80,j*80+370);
+                                            list5.push(list3[random]);
+                                        }
+                                        list3.splice(random, 1);
+                                        i++
+                                        if(k%4 == 0){
+                                            j++
+                                            i = 0;
+                                        }
+                                }
+                                    list3 = list5;
+                                    $(this).remove();
+                                
+                                    if (ta == 1){
+                                        ta = 2;
+                                        ak = 0;
+                                        bk = 0;
+                                    }
+                                    else{
+                                        ta = 1;
+                                        ak = 0;
+                                        bk = 0;
+                                    }
+
+                                    a = 0;
+                                    b = 0;
+
+                                    mi();
+                                    cl();
+
+                                if (km == 0){
+                                    alert("終了");
+                                    if (t1 > t2){
+                                        alert(sn.value+"の勝利");
+                                    }
+                                    if (t1 < t2){
+                                        alert(kn.value+"の勝利");
+                                    }
+                                    if (t1 == t2){
+                                        alert("引き分け");
+                                    }
+                                }
+                                },2500);   
+                            }
+                            else{
+                        console.log(n);
+                        set(n);
+                        if (so){
+                            kesu(n);
+                            kesu(n);
+                            $(".active").parent().children('.e').animate({
+                                "width": 100,
+                                "height": 100
+                            },250);
+                            $(".active").parent().children('.e').animate({
+                                "width": 50,
+                                "height": 50
+                            },250);
+                            setTimeout(function(){
+                            $(".active").parent().children('.e').remove();
+                            $(".active").remove();
+                            a = 0;
+                            b = 0;
+                            var music = new Audio('oto/seikai.mp3');
+                            music.play();
+                            if (km == 0){
+                                alert("終了");
+                                if (t1 > t2){
+                                    alert(sn.value+"の勝利");
+                                }
+                                if (t1 < t2){
+                                    alert(kn.value+"の勝利");
+                                }
+                                if (t1 == t2){
+                                    alert("引き分け");
+                                }
+                            }
+                            so = false;
+                            },500);
+                        }
+                        else{
+                            if (b == 0){
+                                $(".active").hide();
+                            }
+                            else{
+                                a = 0;
+                                b = 0;
+                                $(".active").show();
+                                $(".active").addClass("k");
+                                $(".active").removeClass("active");
+
+                                var music = new Audio('oto/matigai.mp3');
+                                music.play();
+                            }
+                        }
+                    }
+                }
+                    m_k--
+                    if(so){
+                        setTimeout(function(){
+                            click_flg = true;
+                        },700);
+                    }
+                    else{
+                        click_flg = true;
+                    }
+                    },1500);
+
+                }
+            });
+        }
+        </script>   
+    </head>
+</html>
