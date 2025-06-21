@@ -1,0 +1,46 @@
+#main{
+    margin-top: 20px
+}
+#container {
+    margin-top: 4vh;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    display: flex;
+}
+
+#idLeft{
+    float:left;
+    width: 33vw;
+    height: 80vh;
+
+    min-width: 240px;
+
+    /* border: 1px solid black; */
+}
+
+#idRight{
+    float: right;
+    width: 67vw;
+    height: 80vh;
+
+    /* border: 1px solid black; */
+}
+
+#idIcon{
+    /* margin: 16px; */
+}
+#idIcon img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #e1e2e3;
+    object-fit: cover;
+}
+
+#idREADME {
+    border: 1px solid #D9D9D9;
+}
+
+hr {
+    color: #dfe5ea;
+}
