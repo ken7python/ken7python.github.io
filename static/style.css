@@ -56,7 +56,7 @@ hr {
     color: #dfe5ea;
 }
 
-p,h2,h3,h4,li{
+p,h2,h3,h4,li,a{
     color: #1f2329;
 }
 
@@ -74,11 +74,16 @@ p,h2,h3,h4,li{
 }
 #linkNote {
     background-color: #F6F8FA;
-    color: black;
 }
 #linkYouTube {
     background-color: #FF0000;
-    color: white;
+    color: white
+}
+#linkBlog {
+    background-color: #f6f8fa;
+}
+#linkGames {
+    background-color: #f6f8fa;
 }
 
 .link{
