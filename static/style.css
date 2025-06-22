@@ -121,9 +121,7 @@ header {
 .link{
     text-decoration: none;
     text-align: center;
-}
 
-.linkButton {
     padding: 8px 16px;
     margin: 8px 0;
     border-radius: 4px;
@@ -131,7 +129,7 @@ header {
     font-weight: bold;
     font-size: 14px;
     border: none;
-}
+}   
 
 #linkGitHub {
     background-color: black;
