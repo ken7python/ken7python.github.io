@@ -12,9 +12,26 @@ header {
     background-color: #ffffff;
     border-bottom: 1px solid #dfe5ea;
     z-index: 1000;
+
+    background-color: #f6f8fa;
 }
 
-@media (min-width: 1025px) { /* PC・タブレット向けデザイン */
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    padding: 8px;
+}
+
+#AlwaysMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+@media (min-width: 1025px) { /* PC向けデザイン */
     #container {
         display: flex;
         margin-top: 44px;
@@ -44,7 +61,7 @@ header {
     }
 }
 
-@media (max-width: 1024px) { /* スマホ向けデザイン */
+@media (max-width: 1024px) { /* タブレット・スマホ向けデザイン */
     #container {
         display: block;
         margin-top: 44px;
@@ -72,29 +89,48 @@ header {
         width: 16vw;
         height: auto;
     }
+    #SNSMenu.open {
+        display: flex;
+    }
 }
-#idIcon img{
-    border-radius: 50%;
-    border: 3px solid #e1e2e3;
-    object-fit: cover;
-}
-
-#idREADME {
-    border: 1px solid #D9D9D9;
-    height:45vh;
-    padding: 16px;
-}
-#idGrass {
-    border: 1px solid #D9D9D9;
-    height:34vh;
-}
-
-hr {
-    color: #dfe5ea;
+/* リンクたち */
+@media (max-width: 612px) { /* スマホ向けデザイン */
+    .menu-button {
+        display: block;      /* 「…」ボタンを表示 */
+    }
+    #SNSMenu {
+        display: none;    /* 初期状態ではリンクを隠す */
+        flex-direction: column;
+        padding: 0 16px;
+    }
+    #SNSMenu.open {
+        display: flex;       /* JS で「open」を付けると表示 */
+    }
 }
 
-p,h2,h3,h4,li,a{
+@media (min-width: 613px) { /* タブレット・PC向けデザイン */
+    header {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+    }
+}
+
+.link{
+    text-decoration: none;
+    text-align: center;
+}
+
+.linkButton {
+    padding: 8px 16px;
+    margin: 8px 0;
+    border-radius: 4px;
     color: #1f2329;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
 }
 
 #linkGitHub {
@@ -110,7 +146,7 @@ p,h2,h3,h4,li,a{
     color: white;
 }
 #linkNote {
-    background-color: #F6F8FA;
+    background-color: white;
 }
 #linkYouTube {
     background-color: #FF0000;
@@ -123,10 +159,42 @@ p,h2,h3,h4,li,a{
     background-color: #f6f8fa;
 }
 
-.link{
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    text-decoration: none;
+#linkGitHub a,#linkX a,#linkInstagram a,#linkNote a,#linkYouTube a,#linkBlog a,#linkGames a {
+    color: inherit; /* 親要素の色を継承 */
+    text-decoration: none; /* 下線を消す */
+}
+
+/* アイコンのスタイル */
+
+#idIcon img{
+    border-radius: 50%;
+    border: 3px solid #e1e2e3;
+    object-fit: cover;
+}
+
+/* README */
+
+#idREADME {
+    border: 1px solid #D9D9D9;
+    height:45vh;
+    padding: 16px;
+}
+
+/* 草 */
+
+#idGrass {
+    border: 1px solid #D9D9D9;
+    height:34vh;
+}
+
+/* hrの色 */
+
+hr {
+    color: #dfe5ea;
+}
+
+/* フォントの色 */
+
+p,h2,h3,h4,li,a{
+    color: #1f2329;
 }
