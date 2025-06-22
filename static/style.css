@@ -94,7 +94,7 @@ header {
     }
 }
 /* リンクたち */
-@media (max-width: 612px) { /* スマホ向けデザイン */
+@media (max-width: 670px) { /* スマホ向けデザイン */ /* スマホでは「…」ボタンを表示 */
     .menu-button {
         display: block;      /* 「…」ボタンを表示 */
     }
@@ -108,7 +108,7 @@ header {
     }
 }
 
-@media (min-width: 613px) { /* タブレット・PC向けデザイン */
+@media (min-width: 671px) { /* タブレット・PC向けデザイン */
     header {
         display: flex;
         flex-direction: row-reverse;
