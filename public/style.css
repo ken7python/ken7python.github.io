@@ -1,0 +1,197 @@
+body {
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+#main{
+    margin-top: 20px;
+}
+
+header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dfe5ea;
+    z-index: 1000;
+
+    background-color: #f6f8fa;
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    padding: 8px;
+}
+
+#AlwaysMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+@media (min-width: 1025px) { /* PC向けデザイン */
+    #container {
+        display: flex;
+        margin-top: 44px;
+        margin-left: 7vw;
+        margin-right: 4vw;
+    }
+    #idLeft {
+        float:left;
+        width: 23vw;
+    }
+    #idRight {
+        float:right;
+        width: 67vw;
+    }
+    #idIcon {
+        margin-right: 32px;
+        margin-bottom: 16px;
+    }
+    #idIcon img {
+        display: block;
+        /* margin: 0 auto; */
+        width: 100%;
+        height: auto;
+    }
+    li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1024px) { /* タブレット・スマホ向けデザイン */
+    #container {
+        display: block;
+        margin-top: 44px;
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+    #idLeft {
+        width: 100%;
+        float:none;
+    }
+    #idRight {
+        width: 100%;
+        float:none;
+    }
+    #idDivIcon {
+        display: flex;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        align-items: center;
+    }
+    #idName {
+        margin-left: 24px;
+    }
+    #idIcon img {
+        width: 16vw;
+        height: auto;
+    }
+    #SNSMenu.open {
+        display: flex;
+    }
+}
+/* リンクたち */
+@media (max-width: 670px) { /* スマホ向けデザイン */ /* スマホでは「…」ボタンを表示 */
+    .menu-button {
+        display: block;      /* 「…」ボタンを表示 */
+    }
+    #SNSMenu {
+        display: none;    /* 初期状態ではリンクを隠す */
+        flex-direction: column;
+        padding: 0 16px;
+    }
+    #SNSMenu.open {
+        display: flex;       /* JS で「open」を付けると表示 */
+    }
+}
+
+@media (min-width: 671px) { /* タブレット・PC向けデザイン */
+    header {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+    }
+}
+
+.link{
+    text-decoration: none;
+    text-align: center;
+
+    padding: 8px 16px;
+    margin: 8px 0;
+    border-radius: 4px;
+    color: #1f2329;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+}   
+
+#linkGitHub {
+    background-color: black;
+    color: white;
+}
+#linkX {
+    background-color: #0078D4;
+    color: white;
+}
+#linkInstagram {
+    background-color: #E1306C;
+    color: white;
+}
+#linkNote {
+    background-color: white;
+}
+#linkYouTube {
+    background-color: #FF0000;
+    color: white
+}
+#linkBlog {
+    background-color: #f6f8fa;
+}
+#linkGames {
+    background-color: #f6f8fa;
+}
+
+#linkGitHub a,#linkX a,#linkInstagram a,#linkNote a,#linkYouTube a,#linkBlog a,#linkGames a {
+    color: inherit; /* 親要素の色を継承 */
+    text-decoration: none; /* 下線を消す */
+}
+
+/* アイコンのスタイル */
+
+#idIcon img{
+    border-radius: 50%;
+    border: 3px solid #e1e2e3;
+    object-fit: cover;
+}
+
+/* README */
+
+#idREADME {
+    border: 1px solid #D9D9D9;
+    height:45vh;
+    padding: 16px;
+}
+
+/* 草 */
+
+#idGrass {
+    border: 1px solid #D9D9D9;
+    height:34vh;
+}
+
+/* hrの色 */
+
+hr {
+    color: #dfe5ea;
+}
+
+/* フォントの色 */
+
+p,h2,h3,h4,li,a{
+    color: #1f2329;
+}
