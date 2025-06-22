@@ -5,6 +5,17 @@
     <link rel="icon" type="image/svg+xml" href="/Icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KenCode's Portfolio</title>
+    
+    <!-- GitHub Pages SPA fallback script -->
+    <script>
+      // 404.htmlからリダイレクトされた場合のパス復元
+      const redirectPath = sessionStorage.getItem('redirectPath');
+      if (redirectPath) {
+        sessionStorage.removeItem('redirectPath');
+        // Vue Routerが初期化される前にURLを更新
+        history.replaceState(null, null, '/' + redirectPath);
+      }
+    </script>
     <script type="module" crossorigin src="/assets/index-wLgSiAST.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Dto_Jqed.css">
   </head>
