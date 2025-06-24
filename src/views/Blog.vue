@@ -12,12 +12,3 @@
 		</div>
   </div>
 </template>
-
-<style scoped>
-	#container {
-        /* display: flex; */
-        margin-top: 44px;
-        margin-left: 7vw;
-        margin-right: 4vw;
-    }
-</style>

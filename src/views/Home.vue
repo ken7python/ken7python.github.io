@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import Header from '../components/Header.vue';
-  const icon = '/Icon.png'; // publicフォルダーの画像を参照
+  const icon = './Icon.png'; // publicフォルダーの画像を参照
 </script>
 
 <template>
@@ -65,10 +65,7 @@
 <style scoped>
 	@media (min-width: 1025px) { /* PC向けデザイン */
     #container {
-        display: flex;
-        margin-top: 44px;
-        margin-left: 7vw;
-        margin-right: 4vw;
+      display: flex;
     }
     #idLeft {
         float:left;
@@ -94,12 +91,9 @@
 	}
 
 	@media (max-width: 1024px) { /* タブレット・スマホ向けデザイン */
-			#container {
-					display: block;
-					margin-top: 44px;
-					margin-left: 2vw;
-					margin-right: 2vw;
-			}
+      #container {
+        display: block;
+      }
 			#idLeft {
 					width: 100%;
 					float:none;

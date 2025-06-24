@@ -5,3 +5,19 @@ body {
 #main{
     margin-top: 20px;
 }
+
+@media (min-width: 1025px) { /* PC向けデザイン */
+    #container {
+        margin-top: 44px;
+        margin-left: 7vw;
+        margin-right: 4vw;
+    }
+}
+
+@media (max-width: 1024px) { /* タブレット・スマホ向けデザイン */
+    #container {
+        margin-top: 44px;
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+}
