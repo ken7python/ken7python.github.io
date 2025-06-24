@@ -15,6 +15,10 @@
           <RouterLink class="link" to="/game">ゲーム</RouterLink>
           <div class="underLine" v-if="routeName === 'Game'"></div>
         </div>
+        <div id="linkRepos">
+          <RouterLink class="link" to="/repos">リポジトリ</RouterLink>
+          <div class="underLine" v-if="routeName === 'Repos'"></div>
+        </div>
 			</div>
 		</div>
 		<div id="SNSMenu" :class="{ 'open': menuOpen }">
@@ -72,14 +76,14 @@
     /* gap: 16px; */
   }
 
-	@media (max-width: 1024px) { /* タブレット・スマホ向けデザイン */
+	@media (max-width: 1024px) { /* PC向けデザイン */
 		#SNSMenu.open {
       display: flex;
     }
 	}
 
 	/* リンクたち */
-	@media (max-width: 670px) { /* スマホ向けデザイン */ /* スマホでは「…」ボタンを表示 */
+	@media (max-width: 770px) { /* スマホ向けデザイン */ /* スマホでは「…」ボタンを表示 */
 			.menu-button {
 					display: block;      /* 「…」ボタンを表示 */
 			}
@@ -91,9 +95,14 @@
 			#SNSMenu.open {
 					display: flex;       /* JS で「open」を付けると表示 */
 			}
+      .link {
+        font-size: 10px;
+        padding: 4px 8px;
+        margin: 4px 0;
+      }
 	}
 
-	@media (min-width: 671px) { /* タブレット・PC向けデザイン */
+	@media (min-width: 771px) { /* タブレット・PC向けデザイン */
 			header {
 					display: flex;
 					flex-direction: row-reverse;
@@ -101,19 +110,21 @@
 					align-items: center;
 					padding: 8px 16px;
 			}
+
+      .link {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 8px 0;
+      }
 	}
 
 
 	.link{
 			text-decoration: none;
 			text-align: center;
-
-			padding: 8px 16px;
-			margin: 8px 0;
 			border-radius: 4px;
 			color: #1f2329;
 			font-weight: bold;
-			font-size: 14px;
 			border: none;
 	}
 
