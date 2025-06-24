@@ -95,11 +95,16 @@
 			#SNSMenu.open {
 					display: flex;       /* JS で「open」を付けると表示 */
 			}
-      .link {
+      #AlwaysMenu .link {
         font-size: 10px;
         padding: 4px 8px;
         margin: 4px 0;
       }
+	  #SNSMenu .link {
+		font-size: 12px;
+		padding: 8px 16px;
+		margin: 8px 0;
+	  }
 	}
 
 	@media (min-width: 771px) { /* タブレット・PC向けデザイン */
