@@ -143,8 +143,12 @@
 
 	#idGrass {
 			border: 1px solid #D9D9D9;
-			height:34vh;
+			/* height:34vh; */
 	}
+/*   
+  #idAchievements, #idSkill {
+      width: 90%;
+  } */
 
 	/* hrの色 */
 

@@ -3,9 +3,18 @@
     <div id="AlwaysMenu">
       <button id="MenuToggle" class="menu-button" @click="toggleMenu">...</button>
       <div id="OriginalMenu">
-				<RouterLink class="link" to="/">ホーム</RouterLink>
-				<RouterLink class="link" to="/blog">ブログ</RouterLink>
-				<RouterLink class="link" to="/game">ゲーム</RouterLink>
+        <div id="linkHome">
+          <RouterLink class="link" to="/">ホーム</RouterLink>
+          <div class="underLine" v-if="routeName === 'Home'"></div>
+        </div>
+        <div id="linkBlog">
+          <RouterLink class="link" to="/blog">ブログ</RouterLink>
+          <div class="underLine" v-if="routeName === 'Blog'"></div>
+        </div>
+        <div id="linkGame">
+          <RouterLink class="link" to="/game">ゲーム</RouterLink>
+          <div class="underLine" v-if="routeName === 'Game'"></div>
+        </div>
 			</div>
 		</div>
 		<div id="SNSMenu" :class="{ 'open': menuOpen }">
@@ -20,16 +29,21 @@
 
 <script setup lang="ts">
 	import { ref } from 'vue';
+  import { useRoute } from 'vue-router';
+
   const menuOpen = ref(false);
-  
+
   function toggleMenu() {
     menuOpen.value = !menuOpen.value;
   }
+
+  const route = useRoute();
+  const routeName = ref(route.name);
 </script>
 
 <style scoped>
 	header {
-    width: 100%;
+    width: 100svw;
     background-color: #ffffff;
     border-bottom: 1px solid #dfe5ea;
     z-index: 1000;
@@ -49,7 +63,15 @@
 			justify-content: space-between;
 			align-items: center;
 			padding: 8px 16px;
+      padding-right: 8vw;
 	}
+
+  #OriginalMenu {
+    display: flex;
+    flex-direction: row;
+    /* gap: 16px; */
+  }
+
 	@media (max-width: 1024px) { /* タブレット・スマホ向けデザイン */
 		#SNSMenu.open {
       display: flex;
@@ -93,7 +115,14 @@
 			font-weight: bold;
 			font-size: 14px;
 			border: none;
-	}   
+	}
+
+  .underLine {
+    width: 100%;
+    height: 2px;
+    background-color: #fd8c73;
+    margin-top: 8px;
+  }
 
 	#linkGitHub {
 			background-color: black;
