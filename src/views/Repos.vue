@@ -4,13 +4,22 @@
 
     const url :string = "https://api.github.com/users/ken7python/repos?sort=updated";
 
+    interface Repo {
+ 	name: string;
+  	html_url: string;
+  	description: string | null;
+  	stargazers_count: number;
+  	language: string | null;
+  	updated_at: string;
+    }
+
     const topRepos = ref<any[]>([]);
     onMounted(async () => {
         const res = await fetch(url);
         const data = await res.json();
 
-        topRepos.value = data.slice(0,3).map(item => {
-            const desc :string = item.description || null;
+        topRepos.value = (data as Repo[]).slice(0,3).map(item => {
+            const desc :string | null = item.description || null;
             let data = {
                 name: item.name,
                 url: item.html_url,
