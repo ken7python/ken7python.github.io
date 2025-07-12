@@ -1,11 +1,13 @@
 <script setup lang="ts">
 	import Header from '../components/Header.vue';
+  import sns from '../components/sns.vue';
   const icon = './Icon.png'; // publicフォルダーの画像を参照
 </script>
 
 <template>
   <div>
 		<Header />
+
     <meta charset="utf-8">
     <title>KenCode Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +25,9 @@
             </div>
           </div>
           <hr>
+
+          <sns />
+
           <div id="idSkill">
             <h3>資格</h3>
             <ul>
