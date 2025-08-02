@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
-
   const githubLogo = './github-logo.png'
   const xLogo = './x-logo.png'
   const InstagramLogo = './Instagram-logo.png'

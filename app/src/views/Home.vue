@@ -74,12 +74,13 @@
       display: flex;
     }
     #idLeft {
-        float:left;
+        float: left;
         width: 23vw;
     }
     #idRight {
         float:right;
         width: 67vw;
+        padding-left: 4vw;
     }
     #idIcon {
         margin-right: 32px;
